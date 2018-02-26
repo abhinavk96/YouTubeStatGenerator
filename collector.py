@@ -46,6 +46,7 @@ with open('Arts.csv', 'r') as f_in, open('output.csv', 'w') as f_out:
 					continue
 			rows = []
 			queryCounter = 0
+			print('#############\nCurrent Count: {}'.format(counter))
 
 
 
