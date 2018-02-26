@@ -20,7 +20,10 @@ with open('Law.csv', 'r') as f_in, open('output.csv', 'w') as f_out:
 	for row in reader:
 		newRow = {}
 		newRow['id'] = row['id']
-		data = requests.get('https://www.googleapis.com/youtube/v3/videos?id={}&key={}&part=statistics'.format(row['id'], API_KEY))
+		try:
+			data = requests.get('https://www.googleapis.com/youtube/v3/videos?id={}&key={}&part=statistics'.format(row['id'], API_KEY))
+		except:
+			print("A network error has occured")
 		jsonData=data.json()
 		try:
 			requiredStats=jsonData['items'][0]['statistics']
